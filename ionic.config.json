@@ -1,0 +1,7 @@
+{
+  "name": "DeepQuake",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
