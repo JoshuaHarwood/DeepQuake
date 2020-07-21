@@ -1,37 +1,23 @@
 import {IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonRow} from '@ionic/react';
-import React, {useState} from 'react';
-import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
-import UserPool from "../UserPool";
+import React, {useState, useContext} from 'react';
+import { AccountContext } from "./Accounts";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const { authenticate } = useContext(AccountContext);
+
     const onSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
-        const user = new CognitoUser({
-            Username: email,
-            Pool: UserPool
-        });
-
-        const authDetails = new AuthenticationDetails({
-            Username: email,
-            Password: password
-        });
-
-        user.authenticateUser(authDetails, {
-            onSuccess: data => {
-                console.log('onSuccess', data);
-            },
-            onFailure: err => {
-                console.error('onFailure', err);
-            },
-            newPasswordRequired : data => {
-                console.log('newPasswordRequired', data);
-            }
-        });
-
+        authenticate(email, password)
+            .then((data: any) => {
+                console.log("Logged in!", data);
+            })
+            .catch((err: any) => {
+                console.log("Failed to Login!", err);
+            });
     };
 
     return (

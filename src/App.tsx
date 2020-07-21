@@ -15,6 +15,8 @@ import MyAccount from './tabs/MyAccount';
 import ViewRecentQuakes from './tabs/ViewRecentQuakes';
 import Stats from './tabs/Stats';
 
+import { Account} from "./components/authentication/Accounts";
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -36,6 +38,7 @@ import './theme/variables.css';
 import Warnings from "./tabs/Warnings";
 
 const App: React.FC = () => (
+    <Account>
   <IonApp>
     <IonReactRouter>
       <IonTabs>
@@ -67,6 +70,7 @@ const App: React.FC = () => (
       </IonTabs>
     </IonReactRouter>
   </IonApp>
+    </Account>
 );
 
 export default App;

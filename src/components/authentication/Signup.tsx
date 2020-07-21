@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 import React, {useState} from 'react';
 // import './Home.css';
-import UserPool from "../UserPool";
+import UserPool from "../../UserPool";
 import {text} from "ionicons/icons";
 
 const Signup: React.FC = () => {

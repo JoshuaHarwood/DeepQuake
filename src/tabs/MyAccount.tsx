@@ -1,8 +1,8 @@
 import React from 'react';
 import {IonButton, IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, IonToolbar} from '@ionic/react';
 import './MyAccount.css';
-import Signup from "../components/Signup";
-import Login from "../components/Login";
+import Signup from "../components/authentication/Signup";
+import Login from "../components/authentication/Login";
 
 const MyAccount: React.FC = () => {
   return (
