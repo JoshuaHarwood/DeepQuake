@@ -3,6 +3,7 @@ import {IonButton, IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, Io
 import './MyAccount.css';
 import Signup from "../components/authentication/Signup";
 import Login from "../components/authentication/Login";
+import Status from "../components/authentication/Status";
 
 const MyAccount: React.FC = () => {
   return (
@@ -14,10 +15,10 @@ const MyAccount: React.FC = () => {
       </IonHeader>
       <IonContent>
 
-              <Signup />
-
-              <Login />
-
+          {/*We will either render Status or Login / sign up*/}
+          <Status />
+          <Signup />
+          <Login />
 
       </IonContent>
     </IonPage>
