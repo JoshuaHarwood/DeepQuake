@@ -1,18 +1,7 @@
-import {
-    IonButton,
-    IonCol,
-    IonContent,
-    IonGrid,
-    IonInput,
-    IonItem,
-    IonLabel,
-    IonRouterOutlet,
-    IonRow
-} from '@ionic/react';
+import {IonButton, IonCol, IonGrid, IonInput, IonItem, IonRow} from '@ionic/react';
 import React, {useState} from 'react';
 // import './Home.css';
 import UserPool from "../../UserPool";
-import {text} from "ionicons/icons";
 
 const Signup: React.FC = () => {
     const [email, setEmail] = useState('');

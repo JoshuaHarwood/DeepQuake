@@ -21,7 +21,6 @@ const Login: React.FC = () => {
     };
 
     return (
-
         <IonGrid>
             <IonRow justify-content-center>
                 <IonCol align-self-center size-md="6" size-lg="5" size-xs="12">
