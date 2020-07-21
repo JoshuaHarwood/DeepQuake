@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AccountContext } from './Accounts';
+import {IonButton, IonCol, IonGrid, IonRow} from "@ionic/react";
 
 export default () => {
     const [status, setStatus] = useState(false);
@@ -15,13 +16,17 @@ export default () => {
     }, []);
 
     return (
-        <div>
+        <IonGrid>
+            <IonRow>
             {status ? (
-                <div>
+                <IonCol>
                     You are logged in.
-                    <button onClick={logout}>Logout</button>
-                </div>
+                    <IonCol>
+                        <IonButton onClick={logout}>Logout</IonButton>
+                    </IonCol>
+                </IonCol>
             ) : 'Please login below.'}
-        </div>
+            </IonRow>
+        </IonGrid>
     );
 };
