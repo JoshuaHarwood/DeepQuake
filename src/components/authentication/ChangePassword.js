@@ -13,18 +13,23 @@ export default () => {
 
         getSession().then(({ user, email }) => {
             authenticate(email, password).then(() => {
-                user.changePassword(password, newPassword,
-                    (err,
-                     result) => {
-                    if (err) console.error(err);
-                    console.log(result);
+                user.changePassword(password, newPassword, (err, result) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        console.log(result);
+                    }
                 });
             });
         });
     };
 
+
     return (
         <IonGrid>
+            <IonItem>
+                <h6>Change your password...</h6>
+            </IonItem>
         <IonRow>
             <IonCol align-self-center size-md="6" size-lg="5" size-xs="12">
                 <IonItem>
@@ -40,7 +45,7 @@ export default () => {
             <IonCol align-self-center size-md="6" size-lg="5" size-xs="12">
                 <IonItem>
                     <IonInput
-                        value={password}
+                        value={newPassword}
                         placeholder="New Password"
                         onIonChange={
                             e => setNewPassword(e.target.value)
@@ -51,14 +56,15 @@ export default () => {
         </IonRow>
 
         <IonRow>
-            <IonButton
-                size="large"
-                href="/touchid"
-                expand="block"
-                onClick={onSubmit}
-            >
-                Change Password
-            </IonButton>
+            <IonItem>
+                <IonButton
+                    href="/touchid"
+                    expand="block"
+                    onClick={onSubmit}
+                >
+                    Change Password
+                </IonButton>
+            </IonItem>
         </IonRow>
         </IonGrid>
     );

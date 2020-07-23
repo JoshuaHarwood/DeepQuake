@@ -16,10 +16,10 @@ import Login from "../components/authentication/Login";
 import Status from "../components/authentication/Status";
 import Settings from "../components/authentication/Settings";
 import {AccountContext} from "../components/authentication/Accounts";
-
+import ForgotPassword from "../components/authentication/ForgotPassword";
 const MyAccount: React.FC = () => {
 
-    const [createAccount, setCreateAccount] = useState(true);
+    const [createAccount, setCreateAccount] = useState(1);
 
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -51,7 +51,7 @@ const MyAccount: React.FC = () => {
           )}
           {!loggedIn && (
               <>
-                  {createAccount && (
+                  {createAccount === 1 && (
                       <>
                         <Signup />
 
@@ -64,7 +64,7 @@ const MyAccount: React.FC = () => {
                                     <IonItem>
                                         <IonButton onClick={ () => {
                                             return (
-                                                setCreateAccount(false)
+                                                setCreateAccount(0)
                                             );
                                         }}>
                                             Login
@@ -75,7 +75,7 @@ const MyAccount: React.FC = () => {
                         </IonGrid>
                     </>
                   )}
-                  {!createAccount && (
+                  {createAccount === 0 && (
                       <>
                         <Login />
 
@@ -83,12 +83,24 @@ const MyAccount: React.FC = () => {
                               <IonRow>
                                   <IonCol>
                                       <IonItem>
+                                          <h6>Forgot Password? </h6>
+                                          <IonItem>
+                                          <IonButton onClick={ () => {
+                                              return (
+                                                  setCreateAccount(3)
+                                              );
+                                          }}>
+                                            Go Here!
+                                          </IonButton>
+                                          </IonItem>
+                                      </IonItem>
+                                      <IonItem>
                                           <h6>Need and account? </h6>
                                       </IonItem>
                                       <IonItem>
                                           <IonButton onClick={ () => {
                                               return (
-                                                  setCreateAccount(true)
+                                                  setCreateAccount(1)
                                               );
                                           }}>
                                               Sign Up
@@ -97,6 +109,11 @@ const MyAccount: React.FC = () => {
                                   </IonCol>
                               </IonRow>
                           </IonGrid>
+                      </>
+                  )}
+                  {createAccount === 3 && (
+                      <>
+                        <ForgotPassword/>
                       </>
                   )}
               </>

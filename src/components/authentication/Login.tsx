@@ -1,6 +1,7 @@
 import {IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonRow} from '@ionic/react';
 import React, {useState, useContext} from 'react';
 import { AccountContext } from "./Accounts";
+import ForgotPassword from "./ForgotPassword";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');

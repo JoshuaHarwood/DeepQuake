@@ -1,6 +1,6 @@
-import React, { createContext } from 'react';
-import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
-import Pool from '../../UserPool';
+import React, { createContext } from "react";
+import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import Pool from "../../UserPool";
 
 const AccountContext = createContext();
 
@@ -9,11 +9,32 @@ const Account = props => {
         await new Promise((resolve, reject) => {
             const user = Pool.getCurrentUser();
             if (user) {
-                user.getSession((err, session) => {
+                user.getSession(async (err, session) => {
                     if (err) {
                         reject();
                     } else {
-                        resolve(session);
+                        const attributes = await new Promise((resolve, reject) => {
+                            user.getUserAttributes((err, attributes) => {
+                                if (err) {
+                                    reject(err);
+                                } else {
+                                    const results = {};
+
+                                    for (let attribute of attributes) {
+                                        const { Name, Value } = attribute;
+                                        results[Name] = Value;
+                                    }
+
+                                    resolve(results);
+                                }
+                            });
+                        });
+
+                        resolve({
+                            user,
+                            ...session,
+                            ...attributes
+                        });
                     }
                 });
             } else {
@@ -28,17 +49,17 @@ const Account = props => {
 
             user.authenticateUser(authDetails, {
                 onSuccess: data => {
-                    console.log('onSuccess:', data);
+                    console.log("onSuccess:", data);
                     resolve(data);
                 },
 
                 onFailure: err => {
-                    console.error('onFailure:', err);
+                    console.error("onFailure:", err);
                     reject(err);
                 },
 
                 newPasswordRequired: data => {
-                    console.log('newPasswordRequired:', data);
+                    console.log("newPasswordRequired:", data);
                     resolve(data);
                 }
             });
@@ -49,20 +70,19 @@ const Account = props => {
         if (user) {
             user.signOut();
         }
-    }
+    };
 
     return (
-        <AccountContext.Provider value={{
-            authenticate,
-            getSession,
-            logout
-        }}>
+        <AccountContext.Provider
+            value={{
+                authenticate,
+                getSession,
+                logout
+            }}
+        >
             {props.children}
         </AccountContext.Provider>
     );
 };
 
-export {
-    Account,
-    AccountContext
-}
+export { Account, AccountContext };

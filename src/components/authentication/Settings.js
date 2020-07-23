@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AccountContext } from "./Accounts";
 import ChangePassword from "./ChangePassword";
-import {IonGrid} from "@ionic/react";
+import {IonGrid, IonItem} from "@ionic/react";
 
 export default () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -20,10 +20,13 @@ export default () => {
         <div>
             {loggedIn && (
                 <>
-                    <h1>Settings</h1>
-
                     <IonGrid>
-                    <ChangePassword />
+                        <IonItem>
+                            <h1>Settings</h1>
+                        </IonItem>
+                        <IonItem>
+                            <ChangePassword />
+                        </IonItem>
                     </IonGrid>
                 </>
             )}
