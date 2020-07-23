@@ -24,13 +24,13 @@ const Stats: React.FC = () => {
             <IonPage>
                 <IonHeader>
                     <IonToolbar>
-                        <IonTitle>Warnings</IonTitle>
+                        <IonTitle>Recent Quakes</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
                     <IonHeader collapse="condense">
                         <IonToolbar>
-                            <IonTitle size="large">Warnings</IonTitle>
+                            <IonTitle size="large">Recent Quakes</IonTitle>
                         </IonToolbar>
                     </IonHeader>
 

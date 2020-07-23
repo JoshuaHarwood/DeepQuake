@@ -12,7 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import {ellipse, logIn, man, search, square, statsChart, triangle, warning} from 'ionicons/icons';
 import MyAccount from './tabs/MyAccount';
-import ViewRecentQuakes from './tabs/ViewRecentQuakes';
+import ViewRecentQuakes from './tabs/RecentQuakes';
 import Stats from './tabs/Stats';
 
 import { Account} from "./components/authentication/Accounts";

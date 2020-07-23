@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
-import './ViewRecentQuakes.css';
-
+import './RecentQuakes.css';
+import {AccountContext} from "../components/authentication/Accounts";
+import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
 const Stats: React.FC = () => {
-  return (
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const { getSession } = useContext(AccountContext);
+
+    useEffect(() => {
+        getSession().then(() => {
+            setLoggedIn(true);
+        }).catch( () => {
+            setLoggedIn(false);
+        });
+    }, []);
+
+
+    return (
+        <>
     <IonPage>
       <IonHeader>
         <IonToolbar>
@@ -18,10 +34,19 @@ const Stats: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
+          { !loggedIn && (
+              <PleaseLogIn />
+          )}
+          {loggedIn && (
+              <>
+
+              </>
+          )}
 
 
       </IonContent>
     </IonPage>
+            </>
   );
 };
 
