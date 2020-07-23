@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CognitoUser } from "amazon-cognito-identity-js";
 import Pool from "../../UserPool";
-import {IonButton, IonCol, IonGrid, IonInput, IonItem, IonRow} from "@ionic/react";
+import {IonButton, IonCol, IonGrid, IonInput, IonItem, IonLabel, IonRow} from "@ionic/react";
 
 export default () => {
     const [stage, setStage] = useState(1); // 1 = email stage, 2 = code stage
@@ -9,6 +9,8 @@ export default () => {
     const [code, setCode] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [errorMessage, setErrorMessage] = useState("");
 
     const getUser = () => {
         return new CognitoUser({
@@ -26,6 +28,7 @@ export default () => {
             },
             onFailure: err => {
                 console.error("onFailure:", err);
+                setErrorMessage(err.message);
             },
             inputVerificationCode: data => {
                 console.log("Input code:", data);
@@ -39,6 +42,7 @@ export default () => {
 
         if (password !== confirmPassword) {
             console.error("Passwords are not the same");
+            setErrorMessage("Passwords dont match");
             return;
         }
 
@@ -48,11 +52,29 @@ export default () => {
             },
             onFailure: err => {
                 console.error("onFailure:", err);
+                setErrorMessage(err.message);
             }
         });
     };
 
     return (
+
+        <>
+            {(errorMessage !== "" &&
+                <>
+                    <IonGrid>
+                        <IonItem>
+                            <h4>Something went wrong...</h4>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel>
+                                { errorMessage }
+                            </IonLabel>
+                        </IonItem>
+                    </IonGrid>
+                </>
+            )}
+
         <IonGrid>
             {stage === 1 && (
                 <IonCol>
@@ -112,5 +134,6 @@ export default () => {
                 </IonCol>
             )}
         </IonGrid>
+        </>
     );
 };

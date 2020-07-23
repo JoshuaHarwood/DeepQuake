@@ -1,4 +1,4 @@
-import {IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonRow} from '@ionic/react';
+import {IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonRow} from '@ionic/react';
 import React, {useState, useContext} from 'react';
 import { AccountContext } from "./Accounts";
 import ForgotPassword from "./ForgotPassword";
@@ -6,6 +6,8 @@ import ForgotPassword from "./ForgotPassword";
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [errorMessage, setErrorMessage] = useState("");
 
     const { authenticate } = useContext(AccountContext);
 
@@ -18,10 +20,27 @@ const Login: React.FC = () => {
             })
             .catch((err: any) => {
                 console.log("Failed to Login!", err);
+                setErrorMessage(err.message);
             });
     };
 
     return (
+        <>
+            {(errorMessage !== "" &&
+                <>
+                    <IonGrid>
+                        <IonItem>
+                            <h4>Something went wrong...</h4>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel>
+                                { errorMessage }
+                            </IonLabel>
+                        </IonItem>
+                    </IonGrid>
+                </>
+            )}
+
         <IonGrid>
             <IonRow justify-content-center>
                 <IonCol align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -63,7 +82,7 @@ const Login: React.FC = () => {
                 </IonCol>
             </IonRow>
         </IonGrid>
-
+        </>
     );
 };
 

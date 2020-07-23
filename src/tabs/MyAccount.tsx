@@ -19,7 +19,7 @@ import {AccountContext} from "../components/authentication/Accounts";
 import ForgotPassword from "../components/authentication/ForgotPassword";
 const MyAccount: React.FC = () => {
 
-    const [createAccount, setCreateAccount] = useState(1);
+    const [state, setState] = useState(1);
 
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -51,7 +51,7 @@ const MyAccount: React.FC = () => {
           )}
           {!loggedIn && (
               <>
-                  {createAccount === 1 && (
+                  {state === 1 && (
                       <>
                         <Signup />
 
@@ -64,7 +64,7 @@ const MyAccount: React.FC = () => {
                                     <IonItem>
                                         <IonButton onClick={ () => {
                                             return (
-                                                setCreateAccount(0)
+                                                setState(0)
                                             );
                                         }}>
                                             Login
@@ -75,7 +75,7 @@ const MyAccount: React.FC = () => {
                         </IonGrid>
                     </>
                   )}
-                  {createAccount === 0 && (
+                  {state === 0 && (
                       <>
                         <Login />
 
@@ -87,7 +87,7 @@ const MyAccount: React.FC = () => {
                                           <IonItem>
                                           <IonButton onClick={ () => {
                                               return (
-                                                  setCreateAccount(3)
+                                                  setState(3)
                                               );
                                           }}>
                                             Go Here!
@@ -100,7 +100,7 @@ const MyAccount: React.FC = () => {
                                       <IonItem>
                                           <IonButton onClick={ () => {
                                               return (
-                                                  setCreateAccount(1)
+                                                  setState(1)
                                               );
                                           }}>
                                               Sign Up
@@ -111,7 +111,7 @@ const MyAccount: React.FC = () => {
                           </IonGrid>
                       </>
                   )}
-                  {createAccount === 3 && (
+                  {state === 3 && (
                       <>
                         <ForgotPassword/>
                       </>
