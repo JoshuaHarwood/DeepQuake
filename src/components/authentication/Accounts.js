@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import Pool from "../../UserPool";
+import {call} from "ionicons/icons";
 
 const AccountContext = createContext();
 

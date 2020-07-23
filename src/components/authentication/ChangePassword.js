@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { AccountContext } from "./Accounts";
-import {IonButton, IonCol, IonGrid, IonInput, IonItem, IonRow, IonTabs} from "@ionic/react";
+import {IonButton, IonCol, IonGrid, IonInput, IonItem, IonLabel, IonRow, IonTabs} from "@ionic/react";
 
 export default () => {
     const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ export default () => {
 
     return (
         <IonGrid>
-            <IonItem>
+        <IonItem>
                 <h6>Change your password...</h6>
             </IonItem>
         <IonRow>
@@ -67,5 +67,6 @@ export default () => {
             </IonItem>
         </IonRow>
         </IonGrid>
+
     );
 };

@@ -49,12 +49,12 @@ const App: React.FC = () => (
           <Route path="/ViewRecentQuakes" component={ViewRecentQuakes} exact={true} />
           <Route path="/Stats" component={Stats} />
           <Route path="/Warnings" component={Warnings} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/" render={() => <Redirect to="/MyAccount" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="top">
-          <IonTabButton tab="tab1" href="/ViewRecentQuakes">
+          <IonTabButton tab="tab1" href="/RecentQuakes">
             <IonIcon icon={search} />
-            <IonLabel>View Recent Quakes</IonLabel>
+            <IonLabel>Recent Quakes</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/Stats">
             <IonIcon icon={statsChart} />
