@@ -62,6 +62,9 @@ function setState (props) {
                     props.data.magnitudeCount.days365[5],
                     props.data.magnitudeCount.days365[6],
                     props.data.magnitudeCount.days365[7],
+                    props.data.magnitudeCount.days365[8],
+                    props.data.magnitudeCount.days365[9],
+                    props.data.magnitudeCount.days365[10],
                 ]
             }
         ]

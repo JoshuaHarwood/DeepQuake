@@ -54,17 +54,17 @@ function setState (props) {
                     '#8eacbb'
                 ],
                 data: [
-                    props.data.magnitudeCount.days7[0],
-                    props.data.magnitudeCount.days7[1],
-                    props.data.magnitudeCount.days7[2],
-                    props.data.magnitudeCount.days7[3],
-                    props.data.magnitudeCount.days7[4],
-                    props.data.magnitudeCount.days7[5],
-                    props.data.magnitudeCount.days7[6],
-                    props.data.magnitudeCount.days7[7],
-                    props.data.magnitudeCount.days7[8],
-                    props.data.magnitudeCount.days7[9],
-                    props.data.magnitudeCount.days7[10],
+                    props.data.magnitudeCount.days365[0],
+                    props.data.magnitudeCount.days365[1],
+                    props.data.magnitudeCount.days365[2],
+                    props.data.magnitudeCount.days365[3],
+                    props.data.magnitudeCount.days365[4],
+                    props.data.magnitudeCount.days365[5],
+                    props.data.magnitudeCount.days365[6],
+                    props.data.magnitudeCount.days365[7],
+                    props.data.magnitudeCount.days365[8],
+                    props.data.magnitudeCount.days365[9],
+                    props.data.magnitudeCount.days365[10],
                 ]
             }
         ]
@@ -72,7 +72,7 @@ function setState (props) {
 }
 
 
-const Days7Table = (props) => (
+const Days28Table = (props) => (
 
     <>
         <code>
@@ -89,7 +89,7 @@ const Days7Table = (props) => (
                     options={{
                         title:{
                             display:true,
-                            text:'Earthquakes over the past 7 Days',
+                            text:'Earthquakes over the past 28 Days',
                             fontSize:20
                         },
                         legend:{
@@ -101,7 +101,6 @@ const Days7Table = (props) => (
             </div>
         </IonCard>
     </>
-
 );
 
-export default Days7Table;
+export default Days28Table;
