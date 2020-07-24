@@ -15,27 +15,10 @@ const LoadingCard: React.FC = () => {
     <IonCard>
         <IonCardHeader>
             <IonCardSubtitle>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <br/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <br/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <br/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <br/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
-                <IonSkeletonText animated className={"loading-card__top"}/>
+                <IonSkeletonText animated className={"loading-card__large"}/>
+                <IonSkeletonText animated className={"loading-card__small"}/>
+                <IonSkeletonText animated className={"loading-card__small"}/>
+
             </IonCardSubtitle>
         </IonCardHeader>
     </IonCard>

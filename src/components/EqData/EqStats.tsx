@@ -17,23 +17,26 @@ const EqStats: React.FC = () => {
     }, []);
 
     return (
-        <IonGrid>
-            <IonItem>
-                { loading && (
+        <>
+            { loading && (
+                <>
                     <LoadingCard/>
-                )}
-                {!loading && (
-                    <>
+                    <LoadingCard/>
+                    <LoadingCard/>
+                </>
+            )}
+            {!loading && (
+                <IonGrid>
+                    <IonItem>
                         <code>
                             {
                                 JSON.stringify(stats)
                             }
                         </code>
-                    </>
-                )}
-
-            </IonItem>
-        </IonGrid>
+                    </IonItem>
+                </IonGrid>
+            )}
+        </>
     );
 }
 

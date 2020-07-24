@@ -1,3 +1,7 @@
-.loading-card__top {
+.loading-card__small {
     width: 5000px;
+}
+.loading-card__large {
+    width: 5000px;
+    height: 30px;
 }
