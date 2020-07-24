@@ -3,6 +3,8 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import './RecentQuakes.css';
 import {AccountContext} from "../components/authentication/Accounts";
 import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
+import EqStats from "../components/EqData/EqStats";
+
 const Stats: React.FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
@@ -38,7 +40,7 @@ const Stats: React.FC = () => {
           )}
           {loggedIn && (
               <>
-
+                  <EqStats/>
               </>
           )}
 

@@ -6,7 +6,7 @@ import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
 const Stats: React.FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
-    
+
     const { getSession } = useContext(AccountContext);
 
     useEffect(() => {

@@ -46,7 +46,7 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/MyAccount" component={MyAccount} exact={true} />
-          <Route path="/ViewRecentQuakes" component={ViewRecentQuakes} exact={true} />
+          <Route path="/RecentQuakes" component={ViewRecentQuakes} exact={true} />
           <Route path="/Stats" component={Stats} />
           <Route path="/Warnings" component={Warnings} />
           <Route path="/" render={() => <Redirect to="/MyAccount" />} exact={true} />
