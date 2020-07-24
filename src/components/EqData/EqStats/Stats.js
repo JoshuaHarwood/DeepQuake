@@ -18,7 +18,7 @@ export default (props) => {
     return (
         <>
             <IonGrid>
-                <IonItemDivider>Change Some Display Settings:</IonItemDivider>
+                <IonItemDivider>Want to see more or less graphs?</IonItemDivider>
                 <IonItem>
                     <IonLabel>Show Settings:</IonLabel>
                     <IonToggle checked={showSettings}
