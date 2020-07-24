@@ -3,7 +3,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import './RecentQuakes.css';
 import {AccountContext} from "../components/authentication/Accounts";
 import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
-import EqStats from "../components/EqData/EqStats";
+import EqStats from "../components/EqData/EqStats/EqStats";
 
 const Stats: React.FC = () => {
 

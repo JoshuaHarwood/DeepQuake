@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {IonGrid, IonItem, IonLabel} from "@ionic/react";
-import {getEqStats} from "./GetEqStats";
-import LoadingCard from "../Loading/LoadingCard";
+import {getEqStats} from "../GetEqStats";
+import LoadingCard from "../../Loading/LoadingCard";
+import Stats from "./Stats";
 
 const EqStats: React.FC = () => {
 
@@ -15,7 +16,6 @@ const EqStats: React.FC = () => {
             console.log(stats);
         });
     }, []);
-
     return (
         <>
             { loading && (
@@ -26,15 +26,9 @@ const EqStats: React.FC = () => {
                 </>
             )}
             {!loading && (
-                <IonGrid>
-                    <IonItem>
-                        <code>
-                            {
-                                JSON.stringify(stats)
-                            }
-                        </code>
-                    </IonItem>
-                </IonGrid>
+                <code>
+                    <Stats data={stats}/>
+                </code>
             )}
         </>
     );
