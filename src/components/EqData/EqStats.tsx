@@ -19,12 +19,19 @@ const EqStats: React.FC = () => {
     return (
         <IonGrid>
             <IonItem>
-                <LoadingCard/>
-                {/*<code>*/}
-                {/*    {*/}
-                {/*        JSON.stringify(stats)*/}
-                {/*    }*/}
-                {/*</code>*/}
+                { loading && (
+                    <LoadingCard/>
+                )}
+                {!loading && (
+                    <>
+                        <code>
+                            {
+                                JSON.stringify(stats)
+                            }
+                        </code>
+                    </>
+                )}
+
             </IonItem>
         </IonGrid>
     );
