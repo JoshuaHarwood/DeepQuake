@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {IonGrid, IonItem, IonLabel} from "@ionic/react";
 import {getEqStats} from "../GetEqStats";
 import LoadingCard from "../../Loading/LoadingCard";
-import Stats from "./Stats";
+import { Stats } from "./Stats";
 
 const EqStats: React.FC = () => {
 

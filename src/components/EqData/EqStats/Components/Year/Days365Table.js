@@ -5,7 +5,7 @@ import {
     IonGrid, IonItem, IonLabel, IonRow, IonToolbar
 } from "@ionic/react"
 
-import {Bar, Doughnut, Pie} from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
 
 let state = {
     labels: [],

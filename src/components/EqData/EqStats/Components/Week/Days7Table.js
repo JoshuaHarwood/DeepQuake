@@ -1,32 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import {
-    IonCard, IonCardContent, IonCardHeader,
-    IonCol, IonContent,
-    IonGrid, IonItem, IonLabel, IonRow, IonToolbar
+    IonCard, IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle
 } from "@ionic/react"
 
-import {Bar, Doughnut, Pie} from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
+import Comparison from "./Comparison";
 
-let state = {
-    labels: [],
-    datasets: [
-        {
-            label: 'Magnitude',
-            backgroundColor: [],
-            hoverBackgroundColor: [],
-            data: []
-        }
-    ]
-}
+let state = {}
 
 function setState (props) {
+
     state = {
         labels: ['Mag 0', 'Mag 1', 'Mag 2',
             'Mag 3', 'Mag 4', 'Mag 5', 'Mag 6',
             'Mag 7', 'Mad 8', 'Mag 9', 'Mag 10'],
         datasets: [
             {
-                label: 'Total',
                 backgroundColor: [
                     '#f44336',
                     '#9c27b0',
@@ -65,20 +54,23 @@ function setState (props) {
                     props.data.magnitudeCount.days7[8],
                     props.data.magnitudeCount.days7[9],
                     props.data.magnitudeCount.days7[10],
-                ]
+                ],
             }
         ]
     }
 }
 
 
-const Days7Table = (props) => (
+function Days7Table (props) {
 
+    const [showExtras, setShowExtras] = useState(true);
+
+    return(
     <>
         <code>
-        {
-            setState(props)
-        }
+            {
+                setState(props)
+            }
         </code>
         <IonCard>
             <div>
@@ -87,21 +79,40 @@ const Days7Table = (props) => (
                     width={100}
                     height={75}
                     options={{
-                        title:{
-                            display:true,
-                            text:'Earthquakes over the past 7 Days',
-                            fontSize:20
+                        title: {
+                            display: true,
+                            text: 'Earthquakes over the past 7 Days',
+                            fontSize: 20
                         },
-                        legend:{
-                            display:true,
-                            position:'right'
+                        legend: {
+                            display: true,
+                            position: 'right'
                         }
                     }}
                 />
             </div>
+            {props.showSettings && (
+                <>
+                    <IonGrid>
+                        <IonItem>
+                            <IonLabel>Show Extras</IonLabel>
+                            <IonToggle checked={showExtras}
+                                onIonChange={
+                                     e => setShowExtras(e.detail.checked)
+                                }
+                            />
+                        </IonItem>
+                    </IonGrid>
+                </>
+            )}
         </IonCard>
+        { showExtras && (
+        <code>
+            <Comparison data={props.data}/>
+        </code>
+        )}
     </>
 
-);
+    )}
 
 export default Days7Table;

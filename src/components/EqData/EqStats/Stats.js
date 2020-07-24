@@ -1,19 +1,18 @@
 import React, {useState} from "react";
 
-import Days365Table from "./Components/Days365Table";
-import Days7Table from "./Components/Days7Table";
-import Days28Table from "./Components/Days28Table";
-import {IonButton, IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle} from "@ionic/react";
+import Days365Table from "./Components/Year/Days365Table";
+import Days7Table from "./Components/Week/Days7Table";
+import Days28Table from "./Components/Month/Days28Table";
+import {IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle} from "@ionic/react";
 
 
-export default (props) => {
+function Stats (props) {
 
-    const [showYear, setShowYear] = useState(true);
+    const [showYear, setShowYear] = useState(false);
     const [showMonth, setShowMonth] = useState(false);
-    const [showWeek, setShowWeek] = useState(false);
+    const [showWeek, setShowWeek] = useState(true);
 
     const [showSettings, setShowSettings] = useState(false);
-
 
     return (
         <>
@@ -59,17 +58,18 @@ export default (props) => {
             )}
         <code>
             { showYear && (
-                <Days365Table data={props.data}/>
+                <Days365Table data={props.data} showSettings={showSettings}/>
             )}
             { showMonth && (
-                <Days28Table data={props.data}/>
+                <Days28Table data={props.data} showSettings={showSettings}/>
             )}
             { showWeek && (
-                <Days7Table data={props.data}/>
+                <Days7Table data={props.data} showSettings={showSettings}/>
             )}
 
         </code>
         </>
     );
+}
 
-};
+export {Stats}
