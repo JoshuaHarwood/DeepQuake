@@ -28,6 +28,7 @@ const Signup: React.FC = () => {
                     setErrorMessage(err.message)
                 } else {
                     console.log(data);
+                    window.location.reload();
                 }
             });
     };

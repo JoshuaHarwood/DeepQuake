@@ -2,7 +2,7 @@ import {IonCard, IonItem} from "@ionic/react";
 import React from "react";
 
 import {Bar} from 'react-chartjs-2';
-import {CompareTo} from "../../../CompareTo";
+import {CompareTo} from "../../CompareTo";
 
 let state = {
     labels: [],

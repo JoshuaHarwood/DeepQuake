@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonGrid, IonItem, IonLabel} from "@ionic/react";
-import {getEqStats} from "../GetEqStats";
+import {getEqData} from "../GetEqData";
 import LoadingCard from "../../Loading/LoadingCard";
 import { Stats } from "./Stats";
 
@@ -10,12 +9,13 @@ const EqStats: React.FC = () => {
     const [stats, setStats] = useState({});
 
     useEffect(() => {
-        const stats = getEqStats().then((stats) => {
-            setStats(stats);
-            setLoading(false);
-            console.log(stats);
-        });
-    }, []);
+        const stats = getEqData('https://api.geonet.org.nz/quake/stats')
+            .then((stats) => {
+                setStats(stats);
+                setLoading(false);
+                console.log(stats);
+            }
+        );}, []);
     return (
         <>
             { loading && (

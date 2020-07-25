@@ -24,7 +24,9 @@ export default () => {
                     You are logged in.
                 </IonItem>
                 <IonItem>
-                        <IonButton onClick={logout}>Logout</IonButton>
+                        <IonButton
+                            onClick={logout}
+                        >Logout</IonButton>
                 </IonItem>
                 </IonCol>
             ) : 'Please login below.'}

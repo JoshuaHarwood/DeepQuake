@@ -17,6 +17,7 @@ const Login: React.FC = () => {
         authenticate(email, password)
             .then((data: any) => {
                 console.log("Logged in!", data);
+                window.location.reload();
             })
             .catch((err: any) => {
                 console.log("Failed to Login!", err);
@@ -75,6 +76,7 @@ const Login: React.FC = () => {
                             href="/touchid"
                             expand="block"
                             onClick={onSubmit}
+
                         >
                             Login
                         </IonButton>

@@ -18,6 +18,7 @@ export default () => {
                         console.error(err);
                     } else {
                         console.log(result);
+                        window.location.reload();
                     }
                 });
             });

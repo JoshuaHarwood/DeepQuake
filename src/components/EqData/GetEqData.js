@@ -1,8 +1,8 @@
-export const getEqStats = async  () => {
+export const getEqData = async (url) => {
 
     try {
         const response = await fetch(
-            'https://api.geonet.org.nz/quake/stats'
+            url
         );
 
         return await response.json();
