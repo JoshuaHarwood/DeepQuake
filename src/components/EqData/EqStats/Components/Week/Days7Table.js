@@ -5,6 +5,7 @@ import {
 
 import {Doughnut} from 'react-chartjs-2';
 import Comparison from "./Comparison";
+import Comparison2 from "./Comparison2";
 
 let state = {}
 
@@ -109,6 +110,7 @@ function Days7Table (props) {
         { showExtras && (
         <code>
             <Comparison data={props.data}/>
+            <Comparison2 data={props.data}/>
         </code>
         )}
     </>
