@@ -17,26 +17,26 @@ function Stats (props) {
 
     const [preferences, setPreferences] = useState({});
 
-    const { getSession } = useContext(AccountContext);
+    const { getSession, saveSettings } = useContext(AccountContext);
 
     useEffect(() => {
         getSession().then((data) => {
-            let json = JSON.parse(data["custom:preferences"])
-            setPreferences(json);
+            try {
+                let json = JSON.parse(data["custom:preferences"])
+                setPreferences(json);
 
-            // Load the saved settings into the page
-            setShowYear(json.Settings.Stats.ShowYear);
-            setShowMonth(json.Settings.Stats.ShowMonth);
-            setShowWeek(json.Settings.Stats.ShowWeek);
+                // Load the saved settings into the page
+                setShowYear(json.Settings.Stats.ShowYear);
+                setShowMonth(json.Settings.Stats.ShowMonth);
+                setShowWeek(json.Settings.Stats.ShowWeek);
+            } catch (e) {
+                saveSettings(defaultPreferences())
+            }
         });
     }, []);
 
     return (
         <>
-
-
-        {console.log("Settings: ", (preferences))}
-            {console.log("Default: ", defaultPreferences())}
             <IonGrid>
                 <IonItemDivider>Want to see more or less graphs?</IonItemDivider>
                 <IonItem>

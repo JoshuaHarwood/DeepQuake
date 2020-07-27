@@ -6,11 +6,11 @@
             "Settings":
                 {"Stats": {
                     "ShowWeek" : true,
-                    "ShowMonth" : false,
-                    "ShowYear" : false,
+                    "ShowMonth" : true,
+                    "ShowYear" : true,
                     "ShowSettings" : false,
-                    "WeekExtras" : false,
-                    "MonthExtras" : false
+                    "WeekExtras" : true,
+                    "MonthExtras" : true
                     }
                 }
             }

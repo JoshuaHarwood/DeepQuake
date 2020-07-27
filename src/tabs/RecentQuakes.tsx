@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {IonContent, IonHeader, IonItem, IonLabel, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 import './RecentQuakes.css';
 import {AccountContext} from "../components/authentication/Accounts";
 import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
@@ -39,7 +39,11 @@ const Stats: React.FC = () => {
                     {loggedIn && (
                         <>
 
-
+                            <IonItem>
+                                <IonLabel>
+                                    Coming Soon
+                                </IonLabel>
+                            </IonItem>
 
 
                         </>

@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
-import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import {CognitoUser, AuthenticationDetails, CognitoUserAttribute} from "amazon-cognito-identity-js";
 import Pool from "../../UserPool";
+import {defaultPreferences} from "../../Settings/Pref";
 
 const AccountContext = createContext();
 
@@ -65,6 +66,24 @@ const Account = props => {
             });
         });
 
+    const saveSettings = async (settings) => {
+
+        getSession().then(({ user }) => {
+            const attributes = [
+                new CognitoUserAttribute({ Name: "custom:preferences", Value: JSON.stringify(settings) }),
+            ];
+
+            user.updateAttributes(attributes, (err, result) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log(result);
+                    window.location.reload();
+                }
+            });
+        });
+    }
+
     const logout = () => {
         const user = Pool.getCurrentUser();
         if (user) {
@@ -78,6 +97,7 @@ const Account = props => {
             value={{
                 authenticate,
                 getSession,
+                saveSettings,
                 logout
             }}
         >
