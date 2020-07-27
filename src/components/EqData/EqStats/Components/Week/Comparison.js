@@ -76,7 +76,7 @@ const Comparison = (props) => (
                 options={{
                     title:{
                         display:true,
-                        text:'+/- Compared to the Weekly Average',
+                        text:'+/- Per Week Compared to the Past Year',
                         fontSize:20
                     },
                     legend:{

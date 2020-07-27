@@ -17,6 +17,7 @@ import Status from "../components/authentication/Status";
 import Settings from "../components/authentication/Settings";
 import {AccountContext} from "../components/authentication/Accounts";
 import ForgotPassword from "../components/authentication/ForgotPassword";
+import UserPref from "../Settings/UserPref";
 const MyAccount: React.FC = () => {
 
     const [state, setState] = useState(1);
@@ -47,6 +48,7 @@ const MyAccount: React.FC = () => {
               <>
                   <Status />
                   < Settings />
+                  <UserPref/>
               </>
           )}
           {!loggedIn && (

@@ -36,12 +36,10 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Warnings from "./tabs/Warnings";
-import Status from "./components/authentication/Status";
-import Settings from "./components/authentication/Settings";
 
 const App: React.FC = () => (
     <Account>
-  <IonApp>
+      <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>

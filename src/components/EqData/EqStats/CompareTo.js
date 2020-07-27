@@ -6,5 +6,5 @@
  */
 export function CompareTo(A, B, div){
     if(div === 0) { return }
-    return A - (B/div);
+    return A - ((B-A)/div);
 }

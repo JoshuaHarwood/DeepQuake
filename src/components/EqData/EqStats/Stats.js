@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import Days365Table from "./Components/Year/Days365Table";
 import Days7Table from "./Components/Week/Days7Table";
 import Days28Table from "./Components/Month/Days28Table";
 import {IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle} from "@ionic/react";
-
+import {AccountContext} from "../../authentication/Accounts";
+import { defaultPreferences } from "../../../Settings/Pref"
 
 function Stats (props) {
 
@@ -14,8 +15,28 @@ function Stats (props) {
 
     const [showSettings, setShowSettings] = useState(false);
 
+    const [preferences, setPreferences] = useState({});
+
+    const { getSession } = useContext(AccountContext);
+
+    useEffect(() => {
+        getSession().then((data) => {
+            let json = JSON.parse(data["custom:preferences"])
+            setPreferences(json);
+
+            // Load the saved settings into the page
+            setShowYear(json.Settings.Stats.ShowYear);
+            setShowMonth(json.Settings.Stats.ShowMonth);
+            setShowWeek(json.Settings.Stats.ShowWeek);
+        });
+    }, []);
+
     return (
         <>
+
+
+        {console.log("Settings: ", (preferences))}
+            {console.log("Default: ", defaultPreferences())}
             <IonGrid>
                 <IonItemDivider>Want to see more or less graphs?</IonItemDivider>
                 <IonItem>
