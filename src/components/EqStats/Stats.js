@@ -4,7 +4,7 @@ import Days365Table from "./Components/Year/Days365Table";
 import Days7Table from "./Components/Week/Days7Table";
 import Days28Table from "./Components/Month/Days28Table";
 import {IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle} from "@ionic/react";
-import {AccountContext} from "../../authentication/Accounts";
+import {AccountContext} from "../authentication/Accounts";
 import {reload} from "ionicons/icons";
 
 function Stats (props) {

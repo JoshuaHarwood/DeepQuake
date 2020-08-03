@@ -5,7 +5,7 @@ import {
 
 import {Doughnut} from 'react-chartjs-2';
 import Comparison from "./Comparison";
-import {AccountContext} from "../../../../authentication/Accounts";
+import {AccountContext} from "../../../authentication/Accounts";
 
 let state = {}
 

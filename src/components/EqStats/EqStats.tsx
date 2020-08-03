@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getEqData} from "../GetEqData";
-import LoadingCard from "../../Loading/LoadingCard";
+import LoadingCard from "../Loading/LoadingCard";
 import { Stats } from "./Stats";
 
 const EqStats: React.FC = () => {
