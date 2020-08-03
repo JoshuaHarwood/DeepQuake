@@ -9,7 +9,7 @@ const Stats: React.FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const { getSession } = useContext(AccountContext);
+    const { getSession, userSettings } = useContext(AccountContext);
 
     useEffect(() => {
         getSession().then(() => {
@@ -34,7 +34,7 @@ const Stats: React.FC = () => {
             <IonTitle size="large">Stats</IonTitle>
           </IonToolbar>
         </IonHeader>
-
+          {console.log(userSettings)}
           { !loggedIn && (
               <PleaseLogIn />
           )}

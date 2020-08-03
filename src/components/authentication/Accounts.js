@@ -2,10 +2,14 @@ import React, { createContext } from "react";
 import {CognitoUser, AuthenticationDetails, CognitoUserAttribute} from "amazon-cognito-identity-js";
 import Pool from "../../UserPool";
 import {defaultPreferences} from "../../Settings/Pref";
+import {codeSharp} from "ionicons/icons";
 
 const AccountContext = createContext();
 
 const Account = props => {
+
+    let userSettings;
+
     const getSession = async () =>
         await new Promise((resolve, reject) => {
             const user = Pool.getCurrentUser();
@@ -24,6 +28,13 @@ const Account = props => {
                                     for (let attribute of attributes) {
                                         const { Name, Value } = attribute;
                                         results[Name] = Value;
+
+                                        if(userSettings === undefined){
+                                            if (Name === "custom:preferences"){
+                                                userSettings = JSON.parse(Value);
+                                            }
+                                        }
+
                                     }
 
                                     resolve(results);
@@ -66,20 +77,40 @@ const Account = props => {
             });
         });
 
-    const saveSettings = async (settings) => {
+    const getSettings = () => {
 
-        getSession().then(({ user }) => {
-            const attributes = [
-                new CognitoUserAttribute({ Name: "custom:preferences", Value: JSON.stringify(settings) }),
-            ];
+        if(userSettings === undefined){
+            console.log("ERROR LOADING SETTINGS")
+            return defaultPreferences();
 
-            user.updateAttributes(attributes, (err, result) => {
-                if (err) {
-                    console.error(err);
-                } else {
-                    console.log(result);
-                    window.location.reload();
-                }
+        } else {
+            return userSettings;
+        }
+    }
+
+    const setSettings = async (pref) => {
+        userSettings = pref;
+        saveSettings().then(r => {
+            console.log("SET SETTINGS: ", userSettings, pref)
+            window.location.reload()
+        });
+    }
+    const saveSettings = async () => {
+        await new Promise((resolve, reject) => {
+            getSession().then(({user}) => {
+                const attributes = [
+                    new CognitoUserAttribute({Name: "custom:preferences", Value: JSON.stringify(userSettings)}),
+                ];
+
+                user.updateAttributes(attributes, (err, result) => {
+                    if (err) {
+                        console.error(err);
+                        reject(err);
+                    } else {
+                        console.log(result);
+                        resolve(result)
+                    }
+                });
             });
         });
     }
@@ -97,6 +128,8 @@ const Account = props => {
             value={{
                 authenticate,
                 getSession,
+                getSettings,
+                setSettings,
                 saveSettings,
                 logout
             }}
