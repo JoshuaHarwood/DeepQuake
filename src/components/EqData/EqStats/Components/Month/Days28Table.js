@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {
     IonCard, IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle
 } from "@ionic/react"
 
 import {Doughnut} from 'react-chartjs-2';
 import Comparison from "./Comparison";
+import {AccountContext} from "../../../../authentication/Accounts";
 
 let state = {}
 
@@ -63,7 +64,11 @@ function setState (props) {
 
 function Days28Table (props) {
 
-    const [showExtras, setShowExtras] = useState(true);
+    const { getSettings, setSettings, pullSettings } = useContext(AccountContext);
+
+    let pref = getSettings();
+
+    const [reload, setReload] = useState(false);
 
     return(
         <>
@@ -91,14 +96,18 @@ function Days28Table (props) {
                         }}
                     />
                 </div>
-                {props.showSettings && (
+                {pref.Settings.Stats.ShowSettings && (
                     <>
                         <IonGrid>
                             <IonItem>
                                 <IonLabel>Show Extras</IonLabel>
-                                <IonToggle checked={showExtras}
+                                <IonToggle checked={pref.Settings.Stats.MonthExtras}
                                            onIonChange={
-                                               e => setShowExtras(e.detail.checked)
+                                               e => {
+                                                   pref.Settings.Stats.MonthExtras = (e.detail.checked)
+                                                   setSettings(pref)
+                                                   setReload(!reload)
+                                               }
                                            }
                                 />
                             </IonItem>
@@ -106,7 +115,7 @@ function Days28Table (props) {
                     </>
                 )}
             </IonCard>
-            { showExtras && (
+            { pref.Settings.Stats.MonthExtras && (
                 <code>
                     <Comparison data={props.data}/>
                 </code>

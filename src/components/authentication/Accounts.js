@@ -92,7 +92,7 @@ const Account = props => {
         userSettings = pref;
         saveSettings().then(r => {
             console.log("SET SETTINGS: ", userSettings, pref)
-            window.location.reload()
+            // window.location.reload()
         });
     }
     const saveSettings = async () => {

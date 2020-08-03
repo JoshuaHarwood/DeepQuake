@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {
     IonCard, IonGrid, IonItem, IonItemDivider, IonLabel, IonToggle
 } from "@ionic/react"
@@ -6,6 +6,7 @@ import {
 import {Doughnut} from 'react-chartjs-2';
 import Comparison from "./Comparison";
 import Comparison2 from "./Comparison2";
+import {AccountContext} from "../../../../authentication/Accounts";
 
 let state = {}
 
@@ -64,7 +65,11 @@ function setState (props) {
 
 function Days7Table (props) {
 
-    const [showExtras, setShowExtras] = useState(true);
+    const { getSettings, setSettings, pullSettings } = useContext(AccountContext);
+
+    let pref = getSettings();
+
+    const [reload, setReload] = useState(false);
 
     return(
     <>
@@ -92,22 +97,26 @@ function Days7Table (props) {
                     }}
                 />
             </div>
-            {props.showSettings && (
+            {pref.Settings.Stats.ShowSettings && (
                 <>
                     <IonGrid>
                         <IonItem>
                             <IonLabel>Show Extras</IonLabel>
-                            <IonToggle checked={showExtras}
-                                onIonChange={
-                                     e => setShowExtras(e.detail.checked)
-                                }
+                            <IonToggle checked={pref.Settings.Stats.WeekExtras}
+                                       onIonChange={
+                                           e => {
+                                               pref.Settings.Stats.WeekExtras = (e.detail.checked)
+                                               setSettings(pref)
+                                               setReload(!reload)
+                                           }
+                                       }
                             />
                         </IonItem>
                     </IonGrid>
                 </>
             )}
         </IonCard>
-        { showExtras && (
+        { pref.Settings.Stats.WeekExtras && (
         <code>
             <Comparison data={props.data}/>
             <Comparison2 data={props.data}/>
