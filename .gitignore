@@ -12,7 +12,8 @@
 /build
 
 # Keys
-/keys
+/Keys
+.keys.json
 
 # misc
 .DS_Store
