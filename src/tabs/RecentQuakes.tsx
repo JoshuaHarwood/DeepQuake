@@ -3,6 +3,7 @@ import {IonContent, IonHeader, IonItem, IonLabel, IonPage, IonTitle, IonToolbar}
 import './RecentQuakes.css';
 import {AccountContext} from "../components/authentication/Accounts";
 import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
+import EqRecentQuakes from "../components/EqRecentQuakes/EqRecentQuakes"
 const Stats: React.FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
@@ -38,14 +39,7 @@ const Stats: React.FC = () => {
                     )}
                     {loggedIn && (
                         <>
-
-                            <IonItem>
-                                <IonLabel>
-                                    Coming Soon
-                                </IonLabel>
-                            </IonItem>
-
-
+                            <EqRecentQuakes/>
                         </>
                     )}
 
