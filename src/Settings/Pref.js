@@ -1,6 +1,6 @@
 
 
-    function defaultPreferences() {
+function defaultPreferences() {
         const data = (
             {
             "Settings":
