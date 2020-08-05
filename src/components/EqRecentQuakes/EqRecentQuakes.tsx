@@ -18,8 +18,10 @@ const EqRecentQuakes: React.FC = () => {
     const [reload, setReload] = useState(false);
 
     const [stats, setStats] = useState({"features": []});
-
     const [MMI, setMMI] = useState(6);
+
+    const [point, setPoint] = useState();
+    const [selectedQuake, setSelectedQuake] = useState({});
 
     useEffect(() => {
         pullData(MMI);}, []);
@@ -33,9 +35,6 @@ const EqRecentQuakes: React.FC = () => {
             })
     }
 
-    const [point, setPoint] = useState();
-    const [selectedQuake, setSelectedQuake] = useState({});
-
     function showQuake(element : any){
         setPoint(element.geometry.coordinates)
         setSelectedQuake(element)
@@ -45,7 +44,9 @@ const EqRecentQuakes: React.FC = () => {
         <>
             {point !== undefined && (
                 <>
-                    <QuakeMap point={point}/>
+                    <div key={point}>
+                        <QuakeMap point={point}/>
+                    </div>
                 </>
             )}
             <IonCard>

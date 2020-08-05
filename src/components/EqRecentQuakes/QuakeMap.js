@@ -23,8 +23,6 @@ class QuakeMap extends React.Component {
         map.addControl(new tt.NavigationControl());
 
         var marker = new tt.Marker().setLngLat(point).addTo(map);
-
-        console.log(this.props)
     }
 
     render(){
