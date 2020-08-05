@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./map.css"
-import {IonCard, IonCol, IonGrid, IonImg, IonItem, IonRow} from "@ionic/react";
+import {IonCard, IonGrid, IonRow} from "@ionic/react";
 import {APIKeys} from "../../Keys/keys";
 
 class QuakeMap extends React.Component {
@@ -9,7 +9,8 @@ class QuakeMap extends React.Component {
     componentDidMount() {
         const tt = window.tt
 
-        var point = [176.8839722,-39.64704514];
+        var point = (this.props.point !== undefined) ?
+            this.props.point : [0,0];
 
         var map = tt.map({
             key: APIKeys().Keys.TomTom,
@@ -22,6 +23,8 @@ class QuakeMap extends React.Component {
         map.addControl(new tt.NavigationControl());
 
         var marker = new tt.Marker().setLngLat(point).addTo(map);
+
+        console.log(this.props)
     }
 
     render(){
@@ -36,42 +39,3 @@ class QuakeMap extends React.Component {
 }
 
 export default QuakeMap;
-
-// import React, { useEffect } from "react";
-// import {APIKeys} from "../../Keys/keys";
-//
-// function QuakeMap (props) {
-//
-//     useEffect(() => {
-//
-//         console.log("Mounted")
-//
-//
-//         // snip
-//         const tt = window.tt
-//
-//         const map = tt.map({
-//             key: process.env.REACT_APP_TOM_TOM_API_KEY,
-//             container: 'map',
-//             style: 'tomtom://vector/1/basic-main'
-//         })
-//         map.addControl(new tt.FullscreenControl())
-//         map.addControl(new tt.NavigationControl())
-//
-//         this.map = map
-//         this.tt = tt
-//         this.points = [] // for management of points
-//         // snip
-//
-//     })
-//
-//
-//     return (
-//         <>
-//         <div id="map" />
-//         </>
-//         )
-//
-// }
-//
-// export default QuakeMap;

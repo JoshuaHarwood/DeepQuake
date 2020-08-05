@@ -15,7 +15,7 @@ function Warnings (props) {
     return(
         <>
             {(props.data.feed).map((element) => (
-                <IonCard class={"wrap"}>
+                <IonCard>
                     <IonItem>
                         <IonCardTitle>{element.title.split(": ")[0]}</IonCardTitle>
                     </IonItem>
