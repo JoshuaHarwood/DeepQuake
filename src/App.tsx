@@ -10,10 +10,23 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {ellipse, logIn, man, search, square, statsChart, triangle, warning} from 'ionicons/icons';
+import {
+  bonfireSharp,
+  ellipse,
+  logIn,
+  man, manSharp,
+  mapOutline, mapSharp, newspaperOutline, newspaperSharp,
+  pieChartOutline, pieChartSharp,
+  search,
+  square,
+  statsChart,
+  triangle,
+  warning
+} from 'ionicons/icons';
 import MyAccount from './tabs/MyAccount';
 import ViewRecentQuakes from './tabs/RecentQuakes';
 import Stats from './tabs/Stats';
+import Prediction from './tabs/Prediction';
 
 import { Account} from "./components/authentication/Accounts";
 
@@ -47,23 +60,28 @@ const App: React.FC = () => (
           <Route path="/RecentQuakes" component={ViewRecentQuakes} exact={true} />
           <Route path="/Stats" component={Stats} />
           <Route path="/Warnings" component={Warnings} />
+          <Route path="/Prediction" component={Prediction} />
           <Route path="/" render={() => <Redirect to="/MyAccount" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="top">
           <IonTabButton tab="tab1" href="/RecentQuakes">
-            <IonIcon icon={search} />
+            <IonIcon icon={mapSharp} />
             <IonLabel>Recent Quakes</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/Stats">
-            <IonIcon icon={statsChart} />
+            <IonIcon icon={pieChartSharp} />
             <IonLabel>Stats</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/Warnings">
-            <IonIcon icon={warning} />
+            <IonIcon icon={newspaperSharp} />
             <IonLabel>Warnings</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/MyAccount">
-            <IonIcon icon={man} />
+          <IonTabButton tab="tab4" href="/Prediction">
+            <IonIcon icon={bonfireSharp} />
+            <IonLabel>Predictions</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab5" href="/MyAccount">
+            <IonIcon icon={manSharp} />
             <IonLabel>My Account</IonLabel>
           </IonTabButton>
         </IonTabBar>
