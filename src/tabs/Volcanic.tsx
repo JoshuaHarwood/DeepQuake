@@ -3,9 +3,9 @@ import {IonContent, IonHeader, IonItem, IonLabel, IonPage, IonTitle, IonToolbar}
 import './RecentQuakes.css';
 import {AccountContext} from "../components/authentication/Accounts";
 import PleaseLogIn from "../components/authentication/PleaseLogIn.jsx";
-import EqPrediction from "../components/Prediction/EqPrediction";
+import EqVolcanic from "../components/VolcanicQuakes/EqVolcanic";
 
-const Prediction: React.FC = () => {
+const Volcanic: React.FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -25,7 +25,7 @@ const Prediction: React.FC = () => {
             <IonPage>
                 <IonHeader>
                     <IonToolbar>
-                        <IonTitle>Prediction</IonTitle>
+                        <IonTitle>Volcanic Quakes</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
@@ -39,7 +39,7 @@ const Prediction: React.FC = () => {
                         <PleaseLogIn />
                     )}
                     {loggedIn && (
-                        <EqPrediction/>
+                        <EqVolcanic/>
                     )}
 
 
@@ -49,4 +49,4 @@ const Prediction: React.FC = () => {
     );
 };
 
-export default Prediction;
+export default Volcanic;

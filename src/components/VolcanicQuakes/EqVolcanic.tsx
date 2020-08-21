@@ -1,6 +1,6 @@
 import React from "react";
 
-const EqPrediction: React.FC = () => {
+const EqVolcanic: React.FC = () => {
 
     return(
         <>
@@ -8,4 +8,4 @@ const EqPrediction: React.FC = () => {
     );
 }
 
-export default EqPrediction
+export default EqVolcanic

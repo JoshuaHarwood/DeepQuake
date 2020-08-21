@@ -26,7 +26,7 @@ import {
 import MyAccount from './tabs/MyAccount';
 import ViewRecentQuakes from './tabs/RecentQuakes';
 import Stats from './tabs/Stats';
-import Prediction from './tabs/Prediction';
+import Volcanic from './tabs/Volcanic';
 
 import { Account} from "./components/authentication/Accounts";
 
@@ -60,7 +60,7 @@ const App: React.FC = () => (
           <Route path="/RecentQuakes" component={ViewRecentQuakes} exact={true} />
           <Route path="/Stats" component={Stats} />
           <Route path="/Warnings" component={Warnings} />
-          <Route path="/Prediction" component={Prediction} />
+          <Route path="/Volcanic" component={Volcanic} />
           <Route path="/" render={() => <Redirect to="/MyAccount" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="top">
@@ -76,9 +76,9 @@ const App: React.FC = () => (
             <IonIcon icon={newspaperSharp} />
             <IonLabel>Warnings</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/Prediction">
+          <IonTabButton tab="tab4" href="/Volcanic">
             <IonIcon icon={bonfireSharp} />
-            <IonLabel>Predictions</IonLabel>
+            <IonLabel>Volcanic Quakes</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab5" href="/MyAccount">
             <IonIcon icon={manSharp} />
