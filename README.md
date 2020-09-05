@@ -6,8 +6,6 @@ Deep Quake is an Ionic Application so therefore you will need to have setup Ioni
 ## Components needed:
 
 ###  React Carts:
-    react-chartjs-2:
-
     npm install --save react-chartjs-2 chart.js
   
 ###  TomTom Libraries:
